@@ -1,7 +1,7 @@
 # aws-instance-viewer
 aws instance viewer
 
-credentials.json
+bin/credentials.json
 
 ```json
 {"accessKeyId": "hoge", "secretAccessKey": "fuga"}
