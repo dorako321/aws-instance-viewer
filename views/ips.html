@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>AngularJS TIPS</title>
+</head>
+
+<body ng-controller="MyController">
+  <table class="table">
+    <tr ng-repeat="result in ec2Results">
+      <td>{{result.OwnerId}}</td>
+      <td>{{result.ReservationId}}</td>
+    </tr>
+    <tr ng-repeat="result in rdsResults">
+      <td>{{result.OwnerId}}</td>
+      <td>{{result.ReservationId}}</td>
+    </tr>
+  </table>
+  <form>
+    <button ng-click="onclick()">検索</button>
+  </form>
+  <img ng-src="{{weather}}" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <script src="javascripts/controller.js"></script>
+</body>
+
+</html>
