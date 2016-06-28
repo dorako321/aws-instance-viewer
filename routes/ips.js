@@ -2,7 +2,11 @@
 
 var express = require('express');
 var AWS = require('aws-sdk');
+var dnsSync = require('dns-sync');
+var _ = require('lodash');
 //var log4js = require('log4js');
+
+
 
 var router = express.Router();
 
@@ -31,6 +35,10 @@ router.get('/api/v1/rds-list', function (req, res, next) {
 
     var rds = new AWS.RDS({ apiVersion: '2014-10-31' });
     rds.describeDBInstances({}, function (err, data) {
+        _.each(data.DBInstances, function (element, index, array) {
+            data.DBInstances[index]['PrivateIpAddress'] = dnsSync.resolve(element.Endpoint.Address);
+        });
+
         res.json(data);
     });
 
