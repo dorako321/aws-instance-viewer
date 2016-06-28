@@ -29,10 +29,10 @@ router.get('/api/v1/ec2-list', function (req, res, next) {
  */
 router.get('/api/v1/rds-list', function (req, res, next) {
 
-    /*var rds = new AWS.RDS({ apiVersion: '2014-10-31' });
+    var rds = new AWS.RDS({ apiVersion: '2014-10-31' });
     rds.describeDBInstances({}, function (err, data) {
         res.json(data);
-    });*/
+    });
 
 });
 

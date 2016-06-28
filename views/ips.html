@@ -25,8 +25,8 @@
         <table class="table">
           <thead>
             <tr class="filters">
-              <th><input type="text" class="form-control" placeholder="#" disabled></th>
-              <th><input type="text" class="form-control" placeholder="Name" disabled></th>
+              <th><input type="text" class="form-control" placeholder="KeyName" disabled></th>
+              <th><input type="text" class="form-control" placeholder="Spec" disabled></th>
               <th><input type="text" class="form-control" placeholder="Local IP" disabled></th>
               <th><input type="text" class="form-control" placeholder="Public IP" disabled></th>
               <th><input type="text" class="form-control" placeholder="Group" disabled></th>
@@ -35,14 +35,19 @@
           </thead>
           <tbody>
             <tr ng-repeat="result in ec2Results">
-              <td>{{result.OwnerId}}</td>
-              <td>{{result.ReservationId}}</td>
-              <td>{{result.Instances[0].ImageId}}</td>
-              <td>@mdo</td>
+              <td>{{result.Instances[0].Tags.Name}}</td>
+              <td>{{result.Instances[0].InstanceType}}</td>
+              <td>{{result.Instances[0].PrivateIpAddress}}</td>
+              <td>{{result.Instances[0].PublicIpAddress}}</td>
+              <td>{{result.Instances[0].Tags.Group}}</td>
+
             </tr>
             <tr ng-repeat="result in rdsResults">
-              <td>{{result.OwnerId}}</td>
-              <td>{{result.ReservationId}}</td>
+              <td>{{result.Instances[0].DBName}}</td>
+              <td>{{result.Instances[0].DBInstanceClass}}</td>
+              <td>{{result.Instances[0].PrivateIpAddress}}</td>
+              <td>{{result.Instances[0].Endpoint.Address}}:{{result.Instances[0].Endpoint.Port}}</td>
+              <td>{{result.Instances[0].Tags.Group}}</td>
             </tr>
           </tbody>
         </table>
@@ -54,12 +59,10 @@
     <button ng-click="onclick()">検索</button>
   </form>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.js"></script>
   <script src="javascripts/controller.js"></script>
-<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
   <script>
-    /*
-Please consider that the JS part isn't production ready at all, I just code it to show the concept of merging filters and titles together !
-*/
 $(document).ready(function(){
     $('.filterable .btn-filter').click(function(){
         var $panel = $(this).parents('.filterable'),
