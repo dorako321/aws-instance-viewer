@@ -22,7 +22,7 @@ angular.module('myApp', [])
                 method: 'GET',
                 url: '/ips/api/v1/rds-list'
             }).success(function (data, status, headers, config) {
-                $scope.rdsResults = data.Reservations;
+                $scope.rdsResults = data.DBInstances;
             }).error(function (data, status, headers, config) {
                 console.log(status);
             });

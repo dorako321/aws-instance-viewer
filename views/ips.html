@@ -44,12 +44,12 @@
 
             </tr>
             <tr ng-repeat="result in rdsResults">
-              <td>{{result.Instances[0].DBName}}</td>
-              <td>{{result.Instances[0].DBInstanceClass}}</td>
-              <td>{{result.Instances[0].PrivateIpAddress}}</td>
-              <td>{{result.Instances[0].Endpoint.Address}}:{{result.Instances[0].Endpoint.Port}}</td>
-              <td>{{result.Instances[0].Tags.Group}}</td>
-              <td>{{result.Instances[0].State.Name}}</td>
+              <td>{{result.DBInstanceIdentifier}}</td>
+              <td>{{result.DBInstanceClass}}</td>
+              <td>{{result.PrivateIpAddress}}</td>
+              <td>{{result.Endpoint.Address}}:{{result.Endpoint.Port}}</td>
+              <td>{{result.Tags.Group}}</td>
+              <td>{{result.State.Name}}</td>
             </tr>
           </tbody>
         </table>
